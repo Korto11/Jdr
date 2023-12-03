@@ -1,7 +1,22 @@
-body{
-    margin: 0;
-    padding: 0;
+@font-face {
+    font-family: 'PositecBold';
+    src: url('../fonts/PositecBold.ttf') format("truetype")
 }
+
+
+body{
+    background-color: #181818;
+    display : flex;
+    justify-content : center;
+    font-family: 'PositecBold', sans-serif ;
+    color: rgb(221, 221, 221);
+}
+
+.main {
+    background-color: #1f1f1f;
+    width: 70vw;
+}
+
 img{
-    width: 2vw;
+    width: 10vw;
 }

@@ -6,7 +6,7 @@ class HomeController{
     public function getHome(){
         $error = "";
         Template::render('navbar.php','footer.php', 'vueHome.php','Accueil', 
-        ['script.js', 'main.js'], ['style.css', 'main.css'],$error);
+        ['script.js', 'main.js'], ['style.css'],$error);
     }
     public function get404(){
         $error = "";
