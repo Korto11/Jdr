@@ -1,0 +1,31 @@
+{
+    "class":[
+        {
+            "path": "./App/Utils/BddConnect.php"
+        },
+        {
+            "path": "./App/Utils/Utilitaire.php"
+        },
+        {
+            "path": "./App/Model/TypeUtilisateur.php"
+        },
+        {
+            "path": "./App/Model/Utilisateur.php"
+        },
+        {
+            "path": "./App/Model/Personnage.php"
+        },
+        {
+            "path": "./App/Controller/HomeController.php"
+        },
+        {
+            "path": "./App/Controller/UtilisateurController.php"
+        },
+        {
+            "path": "./App/Controller/PersonnageController.php"
+        },
+        {
+            "path": "./App/Vue/Template.php"
+        }
+    ] 
+}
