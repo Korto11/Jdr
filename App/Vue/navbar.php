@@ -1,20 +1,31 @@
 <?php ob_start()?>
 <?php if(isset($_SESSION['connected'])):?>
 <header>
-<ul>
-    <li><a href="./">Accueil</a></li>
-    <li><a href="./allpersonnages">Personnages</a></li>
-    <li><a href="./ownpersonnages">Mes Personnages</a></li>
-    <li><a href="./personnageadd">Créer un personnage</a></li>
-    <li><?=$_SESSION['pseudo']?></li>
-    <li><a href="./userdeconnexion">Deconnexion</a></li>
-</ul>
+<div id="navbar">
+    <div class ="navbar-item">
+        <a href="./">Accueil</a>
+    </div>
+    <div class ="navbar-item">
+        <a href="./ownpersonnages">Mes Personnages</a>
+    </div>     
+    <div class ="navbar-item">
+        <a href="./personnageadd">Créer un personnage</a>
+    </div>   
+    <div class ="navbar-item">
+        <?=$_SESSION['pseudo']?>
+    </div>
+    <div class ="navbar-item">
+        <a href="./userdeconnexion">Deconnexion</a>
+    </div>  
+</div>
 <?php else:?>
-<ul>
-    <li><a href="./">Accueil</a></li>
-    <li><a href="./useradd">Inscription</a></li>
-    <li><a href="./userconnexion">Connexion</a></li>
-</ul>
+<div id="navbar">
+    <a class ="navbar-item" id="lobby" href="./">Accueil</a>
+    <div class ="navbar-item" id="sign-in">
+        <a href="./useradd">Inscription</a>
+        <a href="./userconnexion">Connexion</a>
+    </div>
+</div>
 </header>
 <?php endif;?>
 <?php $navbar = ob_get_clean()?>
