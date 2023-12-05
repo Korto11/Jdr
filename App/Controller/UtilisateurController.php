@@ -55,6 +55,7 @@ class UtilisateurController extends Utilisateur{
                             $_SESSION['connected'] = true;
                             $_SESSION['id'] = $user->getId();
                             $_SESSION['pseudo'] = $user->getPseudo();
+                            header('Location: ./');
                         }else {
                             $error = "Les informations de connexion ne sont pas valides";
                         }

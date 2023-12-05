@@ -1,31 +1,24 @@
 <?php ob_start()?>
 <?php if(isset($_SESSION['connected'])):?>
-<header>
 <div id="navbar">
-    <div class ="navbar-item">
-        <a href="./">Accueil</a>
+    <a id="lobby" href="./"><img id="d20" src="./Public/asset/images/d20.png" alt="d20"></a>
+    <div class ="navbar-menu">
+        <a class ="navbar-item" href="./personnageadd">Créer un personnage</a>
+        <a class ="navbar-item" href="./ownpersonnages">Mes Personnages</a>
+        <a class ="navbar-item" href="./allpersonnages">Tout les Personnages</a>
     </div>
-    <div class ="navbar-item">
-        <a href="./ownpersonnages">Mes Personnages</a>
-    </div>     
-    <div class ="navbar-item">
-        <a href="./personnageadd">Créer un personnage</a>
+    <div id ="log">  
+        <div id= "user"><?=$_SESSION['pseudo']?> </div>
+        <a id= "sign-in" href="./userdeconnexion">DECONNEXION</a>
     </div>   
-    <div class ="navbar-item">
-        <?=$_SESSION['pseudo']?>
-    </div>
-    <div class ="navbar-item">
-        <a href="./userdeconnexion">Deconnexion</a>
-    </div>  
 </div>
 <?php else:?>
 <div id="navbar">
-    <a class ="navbar-item" id="lobby" href="./">Accueil</a>
-    <div class ="navbar-item" id="sign-in">
-        <a href="./useradd">Inscription</a>
-        <a href="./userconnexion">Connexion</a>
+    <a id="lobby" href="./"><img id="d20" src="./Public/asset/images/d20.png" alt="d20"></a>
+    <div id="log">
+        <a id= "sign-in" href="./useradd">INSCRIPTION</a>
+        <a id= "sign-in" href="./userconnexion">CONNEXION</a>
     </div>
 </div>
-</header>
 <?php endif;?>
 <?php $navbar = ob_get_clean()?>
