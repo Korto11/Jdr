@@ -50,7 +50,7 @@ class PersonnageController extends Personnage{
             }
         }
         Template::render('navbar.php', 'footer.php','vueAddPersonnage.php','Création de Personnage',   
-        ['script.js', 'main.js'],['style.css', 'main.css'],$error,);
+        ['script.js', 'main.js'],['style.css', 'form.css'],$error,);
     }
     public function getAllPersonnage(){
         $error = "";
@@ -100,8 +100,34 @@ class PersonnageController extends Personnage{
             $error = "Les paramètres sont invalides";
         }     
         Template::render('navbar.php','footer.php','vueDeletePersonnage.php','Supprimer le personnage',
-        ['script.js', 'main.js'],['style.css', 'main.css'],$error,);
+        ['script.js', 'main.js'],['style.css', 'form.css'],$error,);
     }
+
+
+    public function displayPersonnage(){
+        $error ="";
+        //Tester si les paramètres $_GET['id_personnage'] et $_GET['auteur_id'] existes
+        if(isset($_GET['id_fiche_personnage'])){
+            if(!empty($_GET['id_fiche_personnage']) ){
+                $this->setId(Utilitaire::cleanInput($_GET['id_fiche_personnage']));
+                $perso = $this->find();
+                if($perso){
+                   $data = [];
+                   $data[0] = $perso;
+                } else {
+                    $error = "le personnage n'existe pas";
+                }
+            } else{
+                $error = "Les valeurs des paramètres sont vides";
+            }
+        } else{
+            $error = "Les paramètres sont invalides";
+        }     
+        Template::render('navbar.php','footer.php','vueDisplayPersonnage.php','Afficher le personnage',
+        ['script.js', 'main.js'],['style.css', 'main.css'],$error,$data);
+    }
+
+
 
     public function updatePersonnage(){
         $error ="";
@@ -170,7 +196,7 @@ class PersonnageController extends Personnage{
             $error = "Les paramètres sont invalides";
         }
         Template::render('navbar.php','footer.php','vueUpdatePersonnage.php','mise à jour de Personnage', 
-        ['script.js', 'main.js'],['style.css', 'main.css'],$error,$data);
+        ['script.js', 'main.js'],['style.css', 'form.css'],$error,$data);
     }
     public function filterPersonnage(){
         $error = "";

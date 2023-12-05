@@ -41,6 +41,9 @@
             case '/jdr/personnagedelete':
                 $persoController->deletePersonnage();
                 break;
+            case '/jdr/personnagedisplay':
+                $persoController->displayPersonnage();
+                break;
             default:
                 $homeController->get404();
                 break;

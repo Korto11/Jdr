@@ -6,9 +6,7 @@
             <img src="./Public/asset/images/<?=$personnage->getPhoto()?>">
             <p>Histoire du personnage : <?=$personnage->getHistoire()?></p>
             <p>Equipement du personnage : <?=$personnage->getEquipement()?></p>
-            <a href='./personnageupdate?id_fiche_personnage=<?=$personnage->getId()?>'>modifier</a>
-            <a href='./personnagedelete?id_fiche_personnage=<?=$personnage->getId()?>'>supprimer</a>
-            <a href='./personnagedisplay?id_fiche_personnage=<?=$personnage->getId()?>'>afficher</a>
+            <a href="javascript:history.back()">Retour</a>
         </div>
     <?php endforeach?>
     <p><?=$error?></p>

@@ -37,7 +37,7 @@ class UtilisateurController extends Utilisateur{
             }
         }
         Template::render('navbar.php','footer.php','vueAddUser.php','Inscription', 
-        ['script.js'],['style.css'],$error);
+        ['script.js'],['style.css','form.css'],$error);
     }
     public function connexionUser(){   
         $error ="";
@@ -68,7 +68,7 @@ class UtilisateurController extends Utilisateur{
             }
         }
         Template::render('navbar.php','footer.php','vueConnexionUser.php','Connexion', 
-        ['script.js', 'main.js'], ['style.css', 'main.css'],$error);
+        ['script.js', 'main.js'], ['style.css', 'form.css'],$error);
     }
     public function deconnexionUser(){
         unset($_COOKIE['PHPSESSID']);
