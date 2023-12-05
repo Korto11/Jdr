@@ -142,9 +142,6 @@ class PersonnageController extends Personnage{
                                         $error = 'format incorrect';
                                     }
                             }
-                            else{
-                                $this->setPhoto('test.png');
-                            }
                             $this->setNom($nom);
                             $this->setHistoire($histoire);
                             $this->setEquipement($equipement);
