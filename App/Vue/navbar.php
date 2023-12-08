@@ -21,4 +21,5 @@
     </div>
 </div>
 <?php endif;?>
+<div><img  id ="banner"src="./Public/asset/images/banner.jpg" alt="banner"></div>
 <?php $navbar = ob_get_clean()?>

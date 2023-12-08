@@ -155,7 +155,7 @@ class Personnage extends BddConnect{
         try {
             $id = $this->getAuteur()->getId();
             $req = $this->connexion()->prepare('SELECT 
-            id_fiche_personnage, nom_personnage, histoire_personnage, photo_personnage, equipement_personnage
+            id_fiche_personnage, nom_personnage, histoire_personnage, photo_personnage, equipement_personnage, auteur_personnage
             FROM fiche_personnage
             WHERE statut_personnage = true AND auteur_personnage = ?');
             $req->bindParam(1, $id, \PDO::PARAM_INT);
@@ -172,7 +172,7 @@ class Personnage extends BddConnect{
             $id = $this->id_fiche_personnage;
             $nom = $this->nom_personnage;
             $histoire = $this->histoire_personnage;
-            $photo = $this->photo_personnage;
+            $photo = $this->getPhoto();
             $equipement = $this->equipement_personnage;
             $auteur = $this->getAuteur()->getId();
             $req = $this->connexion()->prepare('UPDATE fiche_personnage SET nom_personnage = ?, 

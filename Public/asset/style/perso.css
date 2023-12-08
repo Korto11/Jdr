@@ -1,0 +1,57 @@
+.personnage {
+    display: flex;
+    flex-direction: row;
+    background-color: #383838;
+    width : 80%;
+    padding :10px;
+    margin:15px;
+}
+
+img.mini {
+    width: 150px;
+    height: 150px;
+}
+
+.infos {
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    height: auto;
+    width: 80%;
+    padding-left: 20px;
+}
+
+.boutons {
+    display: flex;
+    flex-direction: row;
+
+}
+
+button {
+    margin-top: 20px;
+    width: 110px;
+    height :30px;
+    font-family: 'PositecBold', sans-serif ;
+    color: rgb(221, 221, 221);
+    font-size: 1.2rem;
+    background-color: #1f1f1f;
+    margin-top: 5px;
+    margin-left:  5px;
+}
+
+button:hover {
+    background-color: rgb(180, 58, 75);
+    color: #181818;
+    transition: 1s;
+    border: solid 1px rgb(180, 58, 75);
+}
+
+a {
+    display: flex;
+    align-items: center;
+}
+
+#afficher{
+    margin-left:20px ;
+}

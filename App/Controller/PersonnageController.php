@@ -50,7 +50,7 @@ class PersonnageController extends Personnage{
             }
         }
         Template::render('navbar.php', 'footer.php','vueAddPersonnage.php','Création de Personnage',   
-        ['script.js', 'main.js'],['style.css', 'form.css'],$error,);
+        ['script.js'],['style.css', 'form.css'],$error,);
     }
     public function getAllPersonnage(){
         $error = "";
@@ -59,7 +59,7 @@ class PersonnageController extends Personnage{
             $error = "Il n'y à pas de personnages sur le site";
         }
         Template::render('navbar.php','footer.php','vueAllPersonnages.php','Tous les Personnages', 
-        ['script.js', 'main.js'],['style.css', 'main.css'],$error,$persos);
+        ['script.js'],['style.css', 'perso.css'],$error,$persos);
     }
 
     public function getOwnPersonnage(){
@@ -70,7 +70,7 @@ class PersonnageController extends Personnage{
             $error = "Vous n'avez pas créé de personnages";
         }
         Template::render('navbar.php','footer.php','vueOwnPersonnages.php','Mes Personnages', 
-        ['script.js', 'main.js'],['style.css', 'main.css'],$error,$persos);
+        ['script.js'],['style.css', 'perso.css'],$error,$persos);
     }
 
 
@@ -100,7 +100,7 @@ class PersonnageController extends Personnage{
             $error = "Les paramètres sont invalides";
         }     
         Template::render('navbar.php','footer.php','vueDeletePersonnage.php','Supprimer le personnage',
-        ['script.js', 'main.js'],['style.css', 'form.css'],$error,);
+        ['script.js'],['style.css', 'form.css'],$error,);
     }
 
 
@@ -124,26 +124,28 @@ class PersonnageController extends Personnage{
             $error = "Les paramètres sont invalides";
         }     
         Template::render('navbar.php','footer.php','vueDisplayPersonnage.php','Afficher le personnage',
-        ['script.js', 'main.js'],['style.css', 'main.css'],$error,$data);
+        ['script.js'],['style.css', 'perso.css'],$error,$data);
     }
 
 
 
     public function updatePersonnage(){
         $error ="";
-        //tableau $data que l'on passe à la vue
-        //Tester si les paramètres $_GET['id_personnage'] et $_GET['auteur_id'] existes
-        if(isset($_GET['id_fiche_personnage'])){
-            if(!empty($_GET['id_fiche_personnage'])){
+        //Tester si les paramètres $_GET['id_personnage'] et $_GET['auteur_personnage'] existent]
+        if(isset($_GET['id_fiche_personnage']) AND isset($_GET['auteur_personnage'])){
+            if($_SESSION['id'] == $_GET['auteur_personnage']){
                 $this->setId(Utilitaire::cleanInput($_GET['id_fiche_personnage']));
                 $perso = $this->find();
                 //test si le personnage existe
                 if($perso){
                     //injection des valeurs du personnage dans le tableau $data que l'on passe à la vue
+                    $data = [];
                     $data[1] = $perso;
+                    $persotab = (array)$perso;
+                    $indexed = array_values($persotab);
                     //test si le formulaire est submit
                     if(isset($_POST['submit'])){
-                        //test si tous les champs sont bien remplis
+                        //test si tous les champs sont bien remplis     
                         if(!empty($_POST['nom_personnage']) AND !empty($_POST['histoire_personnage']) 
                         AND !empty($_POST['equipement_personnage'])){
                             $nom = Utilitaire::cleanInput($_POST['nom_personnage']);
@@ -151,10 +153,11 @@ class PersonnageController extends Personnage{
                             $equipement = Utilitaire::cleanInput($_POST['equipement_personnage']);
                             if($_FILES['photo_personnage']['tmp_name'] != ""){
                                 $ext = Utilitaire::getFileExtension($_FILES['photo_personnage']['name']);
-                                    if($ext=='png' OR $ext =='PNG' OR $ext = 'jpg' OR $ext =='JPG'OR $ext =='jpeg' OR $ext == 'JPEG' OR $ext=='bmp' OR $ext=='BMP'){
+                                    if($ext == 'png' OR $ext == 'PNG' OR $ext == 'jpg' OR $ext == 'JPG'OR $ext == 'jpeg' OR $ext == 'JPEG' OR $ext == 'bmp' OR $ext == 'BMP'){
                                         $size = $_FILES['photo_personnage']['size'];
                                         $maxsize = 300000;
-                                        if($size < $maxsize){
+                                        $compare = $size < $maxsize;
+                                        if($compare){
                                             $uniqueName = uniqid('',true);
                                             $_FILES['photo_personnage']['name'] = $uniqueName.".".$ext;
                                             $this->setPhoto($_FILES['photo_personnage']['name']);
@@ -162,11 +165,15 @@ class PersonnageController extends Personnage{
                                         }
                                         else {
                                             $error ='le fichier est trop lourd ( taille de fichier max 300 ko )';
+                                            header("Refresh:2; url=./ownpersonnages");
                                         }
                                     }
                                     else{
                                         $error = 'format incorrect';
                                     }
+                            }
+                            else if($_FILES['photo_personnage']['tmp_name'] == ""){
+                                $this->setPhoto($indexed[3]);
                             }
                             $this->setNom($nom);
                             $this->setHistoire($histoire);
@@ -174,6 +181,7 @@ class PersonnageController extends Personnage{
                             $this->getAuteur()->setId($_SESSION['id']);
                             $this->update();
                             $error = "Le personnage a été mis jour";
+                            header("Refresh:2; url=./ownpersonnages");
                         }
                         //test les champs ne sont pas remplis
                         else{
@@ -196,7 +204,7 @@ class PersonnageController extends Personnage{
             $error = "Les paramètres sont invalides";
         }
         Template::render('navbar.php','footer.php','vueUpdatePersonnage.php','mise à jour de Personnage', 
-        ['script.js', 'main.js'],['style.css', 'form.css'],$error,$data);
+        ['script.js'],['style.css', 'form.css'],$error,$data);
     }
     public function filterPersonnage(){
         $error = "";
@@ -212,6 +220,6 @@ class PersonnageController extends Personnage{
             $error = "La liste des chocoblast est vide ";
         }
         Template::render('navbar.php','footer.php','vueFilterAllPersonnages.php','Filtrer chocoblasts', 
-        ['script.js', 'main.js'], ['style.css', 'main.css'],$error, $persos);
+        ['script.js'], ['style.css', 'perso.css'],$error, $persos);
     }
 }

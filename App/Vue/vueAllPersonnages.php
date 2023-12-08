@@ -1,13 +1,17 @@
 <?php ob_start()?>
+<h1>LES PERSONNAGES</h1>
 <div class = "main">
+    
     <?php foreach($tab as $personnage):?>
         <div class="personnage">
-            <p><?=$personnage->getNom()?></p>
-            <img src="./Public/asset/images/<?=$personnage->getPhoto()?>">
-            <p>Histoire du personnage : <?=$personnage->getHistoire()?></p>
-            <p>Equipement du personnage : <?=$personnage->getEquipement()?></p>
-            <p>Auteur : <?= $personnage->auteur_pseudo?></p>
-            <a href='./personnagedisplay?id_fiche_personnage=<?=$personnage->getId()?>'>afficher</a>
+            <img class="mini" src="./Public/asset/images/<?=$personnage->getPhoto()?>">
+            <div class ="infos">
+                <p><?=$personnage->getNom()?></p>
+                <div class ="boutons">
+                    <p>Auteur : <?= $personnage->auteur_pseudo?></p>
+                    <a id="afficher" href='./personnagedisplay?id_fiche_personnage=<?=$personnage->getId()?>'><button>afficher</button></a>
+                </div>
+            </div>
         </div>
     <?php endforeach?>
     <p><?=$error?></p>
