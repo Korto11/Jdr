@@ -12,4 +12,5 @@
         <input id="submit" type="submit" value="Ajouter" name="submit">
     </form>
     <div><?=$error?></div>
+    <div class="span-footer"></div>
 <?php $content = ob_get_clean()?>

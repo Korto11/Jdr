@@ -14,4 +14,5 @@
         <input type="file" name="photo_personnage">
         <input id="submit" type="submit" value="Création" name="submit">
     </form> 
+    <div class="span-footer"></div>
 <?php $content = ob_get_clean()?>

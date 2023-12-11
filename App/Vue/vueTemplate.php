@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -5,14 +6,16 @@
     <?php foreach ($css as $value):?>
     <link rel="stylesheet" href="./Public/asset/style/<?=$value?>">
     <?php endforeach ?>
-    <?php foreach ($js as $value):?>
-    <script src="./Public/asset/script/<?=$value?>" async></script>
-    <?php endforeach ?>
+   
+    
     <title><?=$title?></title>
 </head>
 <body>
     <?=$navbar?>
     <?=$content?>
-    <?=$footer?>
+    <?=$footer?> 
+    <?php foreach ($js as $value):?>
+    <script src="./Public/asset/script/<?=$value?>" async></script>
+    <?php endforeach ?>
 </body>
 </html>

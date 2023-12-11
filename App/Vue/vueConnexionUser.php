@@ -8,4 +8,5 @@
         <input id="submit" type="submit" value="Connexion" name="submit">
     </form>
     <?=$error?>
+    <div class="span-footer"></div>
 <?php $content = ob_get_clean()?>

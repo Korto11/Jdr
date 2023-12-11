@@ -37,7 +37,7 @@ class UtilisateurController extends Utilisateur{
             }
         }
         Template::render('navbar.php','footer.php','vueAddUser.php','Inscription', 
-        ['script.js'],['style.css','form.css'],$error);
+        ['script.js'],['style.css','form.css','perso.css'],$error);
     }
     public function connexionUser(){   
         $error ="";
@@ -68,7 +68,7 @@ class UtilisateurController extends Utilisateur{
             }
         }
         Template::render('navbar.php','footer.php','vueConnexionUser.php','Connexion', 
-        ['script.js'], ['style.css', 'form.css'],$error);
+        ['script.js'], ['style.css', 'form.css','perso.css'],$error);
     }
     public function deconnexionUser(){
         unset($_COOKIE['PHPSESSID']);
@@ -110,7 +110,7 @@ class UtilisateurController extends Utilisateur{
         }
         //appel de la vue (page html)
         Template::render('navbar.php','footer.php','vueActivateUser.php','Activation', 
-        ['script.js'], ['style.css', 'main.css'],$error);
+        ['script.js'], ['style.css', 'main.css','perso.css'],$error);
         //redirection
         header("Refresh:2; url=$url");
     }

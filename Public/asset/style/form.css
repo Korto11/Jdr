@@ -2,7 +2,7 @@ form {
     display: flex;
     flex-direction: column;
     margin-top: 30px;
-    width: 400px;
+    width: 80vw;
     font-size: 1.2rem;
 
 }
@@ -58,3 +58,4 @@ input::file-selector-button {
     color:rgb(221, 221, 221) ;
     font-size: 1.2rem;
 }
+

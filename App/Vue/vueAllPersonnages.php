@@ -16,4 +16,5 @@
     <?php endforeach?>
     <p><?=$error?></p>
 </div>
+<div class="span-footer"></div>
 <?php $content = ob_get_clean()?>

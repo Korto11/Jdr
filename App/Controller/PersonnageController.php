@@ -50,7 +50,7 @@ class PersonnageController extends Personnage{
             }
         }
         Template::render('navbar.php', 'footer.php','vueAddPersonnage.php','Création de Personnage',   
-        ['script.js'],['style.css', 'form.css'],$error,);
+        ['script.js'],['style.css', 'form.css','perso.css'],$error,);
     }
     public function getAllPersonnage(){
         $error = "";
@@ -100,7 +100,7 @@ class PersonnageController extends Personnage{
             $error = "Les paramètres sont invalides";
         }     
         Template::render('navbar.php','footer.php','vueDeletePersonnage.php','Supprimer le personnage',
-        ['script.js'],['style.css', 'form.css'],$error,);
+        ['script.js'],['style.css', 'form.css','perso.css'],$error,);
     }
 
 
@@ -204,7 +204,7 @@ class PersonnageController extends Personnage{
             $error = "Les paramètres sont invalides";
         }
         Template::render('navbar.php','footer.php','vueUpdatePersonnage.php','mise à jour de Personnage', 
-        ['script.js'],['style.css', 'form.css'],$error,$data);
+        ['script.js'],['style.css','perso.css', 'form.css'],$error,$data);
     }
     public function filterPersonnage(){
         $error = "";
