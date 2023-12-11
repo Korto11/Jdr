@@ -32,7 +32,8 @@ let tabColor = [];
 let infos;
 let personnages;
 let main;
-newTagElements(body,'body',tabColor);
+let navbar;
+// newTagElements(body,'body',tabColor);
 newTagElements(form,'form',tabColor);
 newTagElements(input,'input',tabColor);
 newTagElements(textarea,'textarea',tabColor);
@@ -40,6 +41,7 @@ newTagElements(button,'button',tabColor);
 newTagElements(infos,'.infos',tabColor);
 newTagElements(personnages,'.personnage',tabColor);
 newTagElements(infos,'.main',tabColor);
+newTagElements(navbar,'.navbar-item',tabColor);
 let activeaccess = true;
 
 font.addEventListener('click',()=> {
