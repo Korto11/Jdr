@@ -2,7 +2,7 @@ form {
     display: flex;
     flex-direction: column;
     margin-top: 30px;
-    width: 80vw;
+    width: 40vw;
     font-size: 1.2rem;
 
 }
@@ -59,3 +59,30 @@ input::file-selector-button {
     font-size: 1.2rem;
 }
 
+@media (max-width:430px) {
+    form {
+        display: flex;
+        flex-direction: column;
+        margin-top: 30px;
+        width: 60vw;
+        font-size: 1.1rem;
+    
+    }
+
+    input {
+        background-color: #1f1f1f;
+        font-family: 'PositecBold', sans-serif ;
+        font-size: 1rem;
+        color:rgb(221, 221, 221) ;
+        margin-top: 5px;
+    }
+
+    textarea{
+        background-color: #1f1f1f;
+        font-family: 'PositecBold', sans-serif ;
+        font-size: 1rem;
+        color:rgb(221, 221, 221) ;
+        margin-top: 5px;
+        font-size: 1rem;
+    }
+}   

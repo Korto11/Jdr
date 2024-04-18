@@ -76,7 +76,7 @@ body{
     transition: 1s;
 }
 #user {
-    color:rgb(180, 58, 75);
+    color:#b43a4b;
     margin-top: 10px;
 }
 a {
@@ -114,6 +114,7 @@ h1{
 }
 
 footer {
+    margin-bottom: 20px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -240,6 +241,7 @@ h1{
 }
 
 .main {
+    margin-top: 100px;
     background-color: #1f1f1f;
     width: 80vw;
     display : flex;
@@ -274,7 +276,7 @@ footer {
 
 
 
-@media (max-width:1000px) {
+@media (max-width:1000px) and (min-width:431px) {
     body{
         width:100vw;
     }  
@@ -380,6 +382,7 @@ footer {
     }
     
     footer {
+        
         display: flex;
         flex-direction: row;
         justify-content: space-around;

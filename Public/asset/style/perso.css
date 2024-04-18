@@ -189,7 +189,7 @@ a {
 
 
 
-@media (max-width:1000px) {
+@media (max-width:1000px) and (min-width:431px) {
     .personnage {
         display: flex;
         flex-direction: row;

@@ -2,9 +2,27 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width : 80%
 }
 
 p {
     padding: 30px;
 }
 
+.home-button {
+    height: 100px;
+    width : 500px ;
+    margin-top: 30px;
+    font-size: 3rem;
+}
+
+
+@media (max-width:430px) {
+    .home-button {
+        height: 100px;
+        width : 200px ;
+        margin-top: 30px;
+        font-size: 1.3rem;
+    }
+    
+}
