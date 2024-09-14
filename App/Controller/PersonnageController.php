@@ -7,31 +7,16 @@ use App\Model\Personnage;
 class PersonnageController extends Personnage{
     public function addPersonnage(){
         $error ="";
-        if(isset($_POST['submit'])){
-            if(!empty($_POST['nom_personnage']) AND !empty($_POST['histoire_personnage'])){
+        if(isset($_POST['submit']) AND !empty($_POST['nom_personnage']) AND !empty($_POST['histoire_personnage'])){
                 $this->setNom(Utilitaire::cleanInput($_POST['nom_personnage']));
                 $this->setHistoire(Utilitaire::cleanInput($_POST['histoire_personnage']));
                 $this->setEquipement(Utilitaire::cleanInput($_POST['equipement_personnage']));
                 $this->setStatut(true);
                 $this->getAuteur()->setId(Utilitaire::cleanInput($_SESSION['id']));
-                if($_FILES['photo_personnage']['tmp_name'] != ""){
-                    $ext = Utilitaire::getFileExtension($_FILES['photo_personnage']['name']);
-                        if($ext=='png' OR $ext =='PNG' OR $ext = 'jpg' OR $ext =='JPG'OR $ext =='jpeg' OR $ext == 'JPEG' OR $ext=='bmp' OR $ext=='BMP'){
-                            $size = $_FILES['photo_personnage']['size'];
-                            $maxsize = 300000;
-                            if($size < $maxsize){
-                                $uniqueName = uniqid('',true);
-                                $_FILES['photo_personnage']['name'] = $uniqueName.".".$ext;
-                                $this->setPhoto($_FILES['photo_personnage']['name']);
-                                move_uploaded_file($_FILES['photo_personnage']['tmp_name'], './Public/asset/images/'.$_FILES['photo_personnage']['name']);
-                            }
-                            else {
-                                $error ='le fichier est trop lourd ( taille de fichier max 300 ko )';
-                            }
-                        }
-                        else{
-                            $error = 'format incorrect';
-                        }
+                $check = Utilitaire::checkPhoto($_FILES['photo_personnage']['tmp_name']);
+                if($_FILES['photo_personnage']['tmp_name'] != "" AND $check==true){
+                    $this->setPhoto($_FILES['photo_personnage']['name']);
+                    move_uploaded_file($_FILES['photo_personnage']['tmp_name'], './Public/asset/images/'.$_FILES['photo_personnage']['name']);
                 }
                 else{
                     $this->setPhoto('test.png');
@@ -52,6 +37,7 @@ class PersonnageController extends Personnage{
         Template::render('navbar.php', 'footer.php','vueAddPersonnage.php','Création de Personnage',   
         ['script.js'],['style.css', 'form.css','perso.css'],$error,);
     }
+
     public function getAllPersonnage(){
         $error = "";
         $persos = $this->findAll();
